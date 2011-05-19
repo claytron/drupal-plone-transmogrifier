@@ -1,0 +1,16 @@
+# ignoring these files/dirs in the buildout
+develop-eggs
+fake-eggs
+eggs
+bin
+var
+parts
+downloads
+products
+.installed.cfg
+dumped-versions.cfg
+tags
+fabfile*
+.mr.developer.cfg
+buildout.cfg
+IGNORE.txt
