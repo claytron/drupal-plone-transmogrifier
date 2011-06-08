@@ -1,0 +1,64 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:transmogrifier="http://namespaces.plone.org/transmogrifier"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="my.migration">
+
+  <!-- Load all the zcml slugs from the packages named in
+       ``install_requires``. We avoid having to load transmogrifier
+       manually by doing this.
+
+       If you aren't z3c.autoinclude enabled, then add the
+       following to your configure.zcml:
+
+       <include package="collective.transmogrifier" />
+       <include package="collective.transmogrifier" file="meta.zcml" />
+  -->
+  <includeDependencies package="." />
+
+  <genericsetup:registerProfile
+      name="default"
+      title="my.migration"
+      directory="profiles/default"
+      description="Installs the my.migration package"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <!-- Transmogrifier configurations -->
+
+  <transmogrifier:registerConfig
+      name="my.migration.base"
+      title="My migration base config"
+      description="Base settings for all transmogrifier imports"
+      configuration="config/base.cfg"
+      />
+
+  <transmogrifier:registerConfig
+      name="my.migration.pages"
+      title="Drupal pages"
+      description="Import pages from Drupal into Plone"
+      configuration="config/pages.cfg"
+      />
+
+  <transmogrifier:registerConfig
+      name="my.migration.articles"
+      title="Drupal articles"
+      description="Import articles from Drupal into Plone"
+      configuration="config/articles.cfg"
+      />
+
+  <transmogrifier:registerConfig
+      name="my.migration.blogs"
+      title="Drupal blog entries"
+      description="Import blog entries from Drupal into Plone"
+      configuration="config/blogs.cfg"
+      />
+
+  <transmogrifier:registerConfig
+      name="my.migration.comments"
+      title="Drupal comments"
+      description="Import comments from Drupal into Plone"
+      configuration="config/comments.cfg"
+      />
+
+</configure>

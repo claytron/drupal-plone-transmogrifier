@@ -1,0 +1,31 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:cmf="http://namespaces.zope.org/cmf"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="my.policy">
+
+  <!-- Set up z3c.autoinlcude to scan dependencies and plugins of this package -->
+  <includePlugins package="." />
+  <includeDependencies package="." />
+
+  <genericsetup:registerProfile
+      name="default" 
+      title="my.policy (default)" 
+      directory="profiles/default" 
+      description="Installation profile for my.policy" 
+      provides="Products.GenericSetup.interfaces.EXTENSION" 
+      />
+
+  <genericsetup:registerProfile
+      name="initial" 
+      title="my.policy (initial)" 
+      directory="profiles/initial" 
+      description="Initial profile for my.policy" 
+      provides="Products.GenericSetup.interfaces.EXTENSION" 
+      />
+
+  <!-- set up a skin path for the demo -->
+  <cmf:registerDirectory name="skins" directory="skins" recursive="True" />
+
+</configure>

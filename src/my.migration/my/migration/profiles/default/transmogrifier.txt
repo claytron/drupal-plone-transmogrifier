@@ -1,0 +1,4 @@
+my.migration.pages
+my.migration.articles
+my.migration.blogs
+my.migration.comments

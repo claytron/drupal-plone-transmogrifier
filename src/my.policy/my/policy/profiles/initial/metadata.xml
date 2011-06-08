@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<metadata>
+  <version>1000</version>
+  <dependencies>
+    <dependency>profile-my.policy:default</dependency>
+    <dependency>profile-my.migration:default</dependency>
+  </dependencies>
+</metadata>
