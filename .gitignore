@@ -12,5 +12,4 @@ dumped-versions.cfg
 tags
 fabfile*
 .mr.developer.cfg
-buildout.cfg
 IGNORE.txt
