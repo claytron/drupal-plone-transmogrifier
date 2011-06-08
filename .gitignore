@@ -13,3 +13,4 @@ tags
 fabfile*
 .mr.developer.cfg
 IGNORE.txt
+src/transmogrify.comments
