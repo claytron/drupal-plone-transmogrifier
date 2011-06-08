@@ -1,13 +1,78 @@
 # Drupal to Plone Example Buildout
 
-TODO
+This is the buildout that I used for my Plone Symposium East 2011 talk,
+[Migrating From Drupal to Plone with Transmogrifier][1]. You can see the
+[video here][2].
+
+## Pinning info
+
+The buildout has its versions pinned, the most important pinnings are
+noted here.
+
+The [transmogrify.sqlalchemy][3] blueprint, as of this writing does not
+support `SQLAlchemy 0.7`.
+
+    SQLAlchemy = 0.6.7
+
+We are running Plone 4.0, so we need to pin this to work properly.
+
+    plone.app.discussion = 1.0
 
 ## Install instructions
 
-TODO
+### Drupal Install
 
-In `src/my.migration.config`, you can change the dsn.
+First you should create a Drupal site. The demo was created using Acquia
+Drupal 7.0.1, but should work fine with any Drupal 7.0.x install. The
+queries are all written in MySQL, so you'll need to set up Drupal using
+MySQL. See the Drupal docs for more details.
+
+In `my.migration.config.base`, you can change the `dsn` to match your
+settings. The default is to connect with the `root` user with no
+password set. The default database name is `drupal-transmog`
 
     [drupal]
     blueprint = transmogrify.sqlalchemy
     dsn = mysql://root@localhost/drupal-transmog
+
+### Running the Buildout
+
+First, get the source.
+
+    $ git clone git://github.com/claytron/drupal-plone-transmogrifier.git
+
+Now run the buildout (making sure the drupal site is up and running).
+
+    $ cd drupal-plone-transmogrifier
+    $ python2.6 bootstrap.py
+    $ bin/buildout
+
+Buildout will utilize the [collective.recipe.plonesite][4] recipe to
+start up Zope and apply the profiles from `my.policy`. When it is
+finished the content from drupal should appear in your site.
+
+## Running the site
+
+Once the buildout has finished, you can access the site by starting up
+Plone.
+
+    $ bin/zeoserver start
+    $ bin/instance fg
+
+Then go to the site in your browser: http://localhost:8080/Plone
+
+The folders aren't currently published, so you'll have to login to see
+the content.
+
+    username: admin
+    password: admin
+
+## Issues
+
+If you run into any issues trying to get this to work, add an issue to
+the tracker here on this github project
+
+[1]: http://weblion.psu.edu/symposium/talks/migrating-from-drupal-to-plone-with-transmogrifier
+[2]: https://streaming.psu.edu/media/?movieId=13401
+[3]: http://pypi.python.org/pypi/transmogrify.sqlalchemy
+[4]: http://pypi.python.org/pypi/collective.recipe.plonesite
