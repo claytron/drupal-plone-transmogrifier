@@ -1,0 +1,13 @@
+# Drupal to Plone Example Buildout
+
+TODO
+
+## Install instructions
+
+TODO
+
+In `src/my.migration.config`, you can change the dsn.
+
+    [drupal]
+    blueprint = transmogrify.sqlalchemy
+    dsn = mysql://root@localhost/drupal-transmog
