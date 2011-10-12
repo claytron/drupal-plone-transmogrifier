@@ -35,6 +35,12 @@ password set. The default database name is `drupal-transmog`
     blueprint = transmogrify.sqlalchemy
     dsn = mysql://root@localhost/drupal-transmog
 
+#### Add at least one item in the path `blog`
+
+Add an item, then change the `automatic alias` to `blog/<id>`
+
+This will allow the blog section to be set up in Plone.
+
 ### Running the Buildout
 
 First, get the source.
